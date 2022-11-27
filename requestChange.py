@@ -7,8 +7,9 @@ soup = BeautifulSoup(html_text, 'lxml')
 jobsList = soup.find_all('li', class_='clearfix job-bx wht-shd-bx')
 for jobs in jobsList:
     published_date = jobs.find('span', class_='sim_posted').span.text
-    print(f"The published date: {published_date} :")
-    companyName = jobs.find('h3', class_='joblist-comp-name').text.replace(' ', '')
-    skills = jobs.find('span', class_='srp-skills').text.replace(" ", "")
-    print(f"company name:{companyName}. Required skills: {skills}")
+    if 'few' in published_date :
+        print(f"The published date: {published_date} :")
+        companyName = jobs.find('h3', class_='joblist-comp-name').text.replace(' ', '')
+        skills = jobs.find('span', class_='srp-skills').text.replace(" ", "")
+        print(f"company name:{companyName}. Required skills: {skills}")
     print(jobs)
